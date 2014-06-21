@@ -43,3 +43,14 @@ cacheSolve <- function(x, ...) {
     x$setinverse(i)
     i
 }
+
+## A quick demonstration of the cache's advantage for a large matrix:
+##
+## > mc<-makeCacheMatrix(matrix(rnorm(3200^2),nrow=3200))
+## > system.time(cacheSolve(mc))
+##    user  system elapsed
+##  10.445   0.056   3.549
+## > system.time(cacheSolve(mc))
+## getting cached data
+##    user  system elapsed
+##   0.001   0.000   0.000
